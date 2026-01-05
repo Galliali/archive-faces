@@ -1,0 +1,433 @@
+:root {
+    --rojo: #59514D;
+    --negro: #F2F2F2;
+    --gris: #8C0303;
+    --gris-claro: #F2F2F2;
+}
+
+/* GENERAL */
+body {
+    margin: 0;
+    padding: 40px;
+    padding-top: 120px;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 300;
+    background: var(--negro);
+    color: var(--gris);
+    letter-spacing: 0.3px;
+}
+
+body.no-scroll {
+    overflow: hidden;
+    /* Disable scroll when lightbox is open */
+}
+
+/* HEADER */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 90px;
+    /* Increased to accommodate larger text */
+    padding: 0 40px;
+    background: var(--negro);
+    display: flex;
+    justify-content: space-between;
+    /* Left/Right layout */
+    align-items: center;
+    /* Custom spacing for dotted border using gradient */
+    border-bottom: none;
+    background-image: radial-gradient(circle, #000 2px, transparent 2.5px);
+    background-size: 14px 2px;
+    /* 14px spacing */
+    background-repeat: repeat-x;
+    background-position: bottom;
+    z-index: 1000;
+}
+
+.main-menu {
+    display: flex;
+    gap: 40px;
+    /* Space between links */
+}
+
+.site-header a.menu-link {
+    font-family: 'Roboto Mono', monospace;
+    /* Tech feel for menu */
+    /* Tech feel for menu */
+    font-size: 24px;
+    /* Increased from 18px */
+    font-weight: 500;
+    text-transform: lowercase;
+    letter-spacing: -0.5px;
+    color: #000;
+    text-decoration: none;
+    position: relative;
+}
+
+/* Hover Animation: Sliding Underline */
+.site-header a.menu-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1.5px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--rojo);
+    /* Using the accent color for interaction */
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.site-header a.menu-link:hover::after,
+.site-header a.menu-link.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.site-header a.menu-link:hover {
+    color: var(--gris);
+    /* Match footer hover (Red) */
+}
+
+.logo {
+    margin-right: auto;
+    font-family: 'Bodoni Moda', serif;
+    /* Classy serif logo */
+    font-weight: 800;
+    font-size: 32px;
+    /* Logo larger than links */
+}
+
+/* TITULOS */
+.main-title {
+    font-family: 'Bodoni Moda', serif;
+    /* Balenciaga style */
+    font-size: 130px;
+    /* Much Larger as requested */
+    font-weight: 400;
+    /* Much thinner (Regular) */
+    text-transform: uppercase;
+    line-height: 0.8;
+    letter-spacing: -5px;
+    /* Tighter for that condensed fashionable look */
+    color: var(--gris);
+    margin-bottom: 20px;
+    margin-left: -3px;
+}
+
+/* Modifier for About Page Title */
+.about-title {
+    color: #000;
+}
+
+.subtitle {
+    font-size: 16px;
+    /* Reduced from 24px */
+    font-weight: 400;
+    color: #444;
+    /* Softer contrast for body text */
+    max-width: 800px;
+    margin-bottom: 60px;
+    line-height: 1.6;
+}
+
+/* GALERÍA */
+.gallery {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 130px;
+}
+
+/* VIDEO GALLERY OVERRIDE */
+.video-gallery {
+    grid-template-columns: 1fr;
+    max-width: 1000px;
+    /* Contemplative size */
+    margin: 40px auto 0 auto;
+    /* Centered with top margin */
+}
+
+.gallery-item {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;  Optional: center caption relative to image if desired, but default block is fine */
+}
+
+.gallery img {
+    width: 100%;
+    border: 3px solid var(--gris-claro);
+    object-fit: cover;
+    cursor: zoom-in;
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.gallery img:hover {
+    border-color: var(--gris);
+    /* Red hover as requested */
+    /* Softer hover border */
+    box-shadow: none;
+    /* Clean, no glow */
+    /* Soft grey shadow */
+    transform: scale(1.015);
+}
+
+/* ZOOM & CAPTION */
+.caption {
+    margin-top: 10px;
+    font-size: 16px;
+    /* Increased from 14px */
+    font-weight: 300;
+    /* Lighter as requested */
+    color: #000 !important;
+    /* Force Black */
+    letter-spacing: 0.5px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* LIGHTBOX */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(242, 242, 242, 0.98);
+    /* Slightly more transparent as requested */
+    display: none;
+    z-index: 2000;
+    /* Flex centering for the content */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+
+/* LIGHTBOX IMAGE (Centered but allowing space for UI) */
+.lightbox-content {
+    display: flex;
+    justify-content: flex-end;
+    /* Right aligned */
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 100px;
+    padding-right: 40px;
+    /* Spacing */
+    /* Space for bottom UI */
+    box-sizing: border-box;
+}
+
+.lightbox-content img {
+    max-height: 80vh;
+    max-width: 90vw;
+    border: none;
+    /* Clean look or keep border? User didn't specify, but clean is better for contemplative */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* NEW LIGHTBOX UI (Bottom Left) */
+.lightbox-ui {
+    position: fixed;
+    bottom: 40px;
+    left: 40px;
+    z-index: 3000;
+    text-align: left;
+    color: #000;
+}
+
+.ui-title {
+    font-family: 'Bodoni Moda', serif;
+    font-weight: 400;
+    font-size: 100px;
+    /* Increased from 60px */
+    margin: 0 0 20px 0;
+    line-height: 1;
+    color: #000;
+    letter-spacing: -3px;
+}
+
+.ui-bar {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    /* Increased gap */
+    font-family: 'Roboto Mono', monospace;
+    font-size: 24px;
+    /* Increased from 18px for usability */
+    font-weight: 500;
+    /* Custom spaced dots for footer */
+    border-top: none;
+    background-image: radial-gradient(circle, #000 2px, transparent 2.5px);
+    background-size: 14px 2px;
+    /* Matching header spacing */
+    background-repeat: repeat-x;
+    background-position: top;
+
+    padding-top: 25px;
+    width: max-content;
+    /* Only as wide as content */
+    min-width: 300px;
+    /* Minimum width for the line look */
+}
+
+.ui-btn {
+    background: transparent;
+    border: none;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 24px;
+    /* Matching bar size */
+    font-weight: 500;
+    color: #000;
+    cursor: pointer;
+    padding: 0;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+}
+
+.ui-btn:hover {
+    color: var(--gris);
+    /* Red hover */
+}
+
+.ui-counter {
+    margin-right: auto;
+    /* Push nav group right? Or just spacing. Let's keep strict gap */
+    letter-spacing: 1px;
+}
+
+.nav-group {
+    display: flex;
+    gap: 20px;
+    margin-left: 20px;
+}
+
+/* CERRAR */
+/* Removed as requested */
+
+
+/* NAVIGATION BUTTONS */
+.nav-btn {
+    position: fixed;
+    /* Fixed to viewport as requested so they don't move */
+    top: 50%;
+    transform: translateY(-50%);
+    transform: translateY(-50%);
+    background: transparent;
+    /* Minimalist: No background */
+    border: none;
+    font-size: 48px;
+    /* Larger icon for visibility without circle */
+    color: #000;
+    /* Black icon for contrast */
+    cursor: pointer;
+    z-index: 3000;
+    padding: 20px;
+    /* Hit area */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.nav-btn:hover {
+    transform: translateY(-50%) scale(1.2);
+    background: transparent;
+    color: var(--gris);
+    /* Red hover effect */
+}
+
+.prev {
+    left: 40px;
+    /* Fixed distance from left screen edge */
+}
+
+.next {
+    right: 40px;
+    /* Fixed distance from right screen edge */
+}
+
+/* INFO BUTTON */
+/* INFO BUTTON */
+.info-btn {
+    position: fixed;
+    /* Fixed to viewport */
+    top: 40px;
+    /* Top Right position */
+    right: 40px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: #000;
+    /* Solid Black */
+    color: #FFF;
+    /* White text */
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
+    font-size: 20px;
+    font-style: normal;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.info-btn:hover,
+.info-btn.active {
+    background: var(--gris);
+    /* Red hover effect */
+    color: #FFF;
+    transform: scale(1.1);
+}
+
+
+/* INFO DETAILS PANEL */
+/* INFO DETAILS PANEL */
+.lightbox-details {
+    position: fixed;
+    /* Side Drawer */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    /* Full height */
+    width: 320px;
+    background: #F2F2F2;
+    /* Light background */
+    padding: 100px 40px 40px 40px;
+    /* Top padding clears the button */
+    border-left: 2px solid #000;
+    /* Border on left */
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    color: #000;
+    z-index: 2900;
+    box-sizing: border-box;
+    transform: translateX(100%);
+    /* Hidden by default */
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    display: block;
+    /* Always block for transform to work, control visibility via class */
+}
+
+.lightbox-details.show {
+    transform: translateX(0);
+    /* Slide in */
+    display: block;
+}
+
+.lightbox-details strong {
+    display: block;
+    color: var(--gris);
+    /* Red accent for ID */
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 700;
+}
