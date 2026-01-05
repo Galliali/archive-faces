@@ -1,3 +1,19 @@
+/* CSS Reset for consistent rendering */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    /* Base font size - ensures consistency */
+    -webkit-text-size-adjust: 100%;
+    /* Prevents iOS text size adjustment */
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
 :root {
     --rojo: #59514D;
     --negro: #F2F2F2;
