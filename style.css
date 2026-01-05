@@ -177,7 +177,8 @@ body.no-scroll {
 
 .gallery img {
     width: 100%;
-    border: 3px solid var(--gris-claro);
+    border: 1px solid var(--gris-claro);
+    /* Thinner border for subtlety */
     object-fit: cover;
     cursor: zoom-in;
     transition:
@@ -188,12 +189,11 @@ body.no-scroll {
 
 .gallery img:hover {
     border-color: var(--gris);
-    /* Red hover as requested */
-    /* Softer hover border */
-    box-shadow: none;
-    /* Clean, no glow */
-    /* Soft grey shadow */
-    transform: scale(1.015);
+    /* Red hover to match other site interactions */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    /* Soft gray shadow */
+    transform: scale(1.02);
+    /* Subtle zoom */
 }
 
 /* ZOOM & CAPTION */
@@ -225,33 +225,37 @@ body.no-scroll {
 }
 
 
-/* LIGHTBOX IMAGE (Centered but allowing space for UI) */
+/* LIGHTBOX IMAGE (Centered vertically and aligned right) */
 .lightbox-content {
     display: flex;
     justify-content: flex-end;
     /* Right aligned */
     align-items: center;
+    /* Vertically centered */
     width: 100%;
     height: 100%;
-    padding-bottom: 100px;
+    padding-bottom: 0;
+    /* Removed bottom padding for true centering */
     padding-right: 40px;
-    /* Spacing */
-    /* Space for bottom UI */
+    /* Spacing from right edge */
     box-sizing: border-box;
 }
 
 .lightbox-content img {
-    max-height: 80vh;
-    max-width: 90vw;
+    max-height: 85vh;
+    /* Increased from 80vh for more prominence */
+    max-width: 95vw;
+    /* Increased from 90vw for more screen usage */
     border: none;
-    /* Clean look or keep border? User didn't specify, but clean is better for contemplative */
+    /* Clean look or keep border? User didn't specified, but clean is better for contemplative */
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
 /* NEW LIGHTBOX UI (Bottom Left) */
 .lightbox-ui {
     position: fixed;
-    bottom: 40px;
+    bottom: 30px;
+    /* Reduced from 40px */
     left: 40px;
     z-index: 3000;
     text-align: left;
@@ -261,22 +265,24 @@ body.no-scroll {
 .ui-title {
     font-family: 'Bodoni Moda', serif;
     font-weight: 400;
-    font-size: 60px;
-    /* Reduced for minimalism */
-    margin: 0 0 20px 0;
+    font-size: 36px;
+    /* Balanced size - not too big, not too small */
+    margin: 0 0 14px 0;
+    /* Slightly increased margin */
     line-height: 1;
     color: #000;
-    letter-spacing: -2px;
+    letter-spacing: -1px;
+    /* Balanced letter spacing */
 }
 
 .ui-bar {
     display: flex;
     align-items: center;
-    gap: 30px;
-    /* Reduced gap */
+    gap: 20px;
+    /* Reduced from 30px */
     font-family: 'Roboto Mono', monospace;
-    font-size: 14px;
-    /* Smaller for minimalism */
+    font-size: 11px;
+    /* Reduced from 14px for more discretion */
     font-weight: 500;
     /* Custom spaced dots for footer */
     border-top: none;
@@ -286,19 +292,20 @@ body.no-scroll {
     background-repeat: repeat-x;
     background-position: top;
 
-    padding-top: 12px;
+    padding-top: 8px;
+    /* Reduced from 12px */
     width: max-content;
     /* Only as wide as content */
-    min-width: 300px;
-    /* Minimum width for the line look */
+    min-width: 250px;
+    /* Reduced from 300px */
 }
 
 .ui-btn {
     background: transparent;
     border: none;
     font-family: 'Roboto Mono', monospace;
-    font-size: 14px;
-    /* Matching bar size */
+    font-size: 11px;
+    /* Reduced from 14px to match bar */
     font-weight: 500;
     color: #000;
     cursor: pointer;
