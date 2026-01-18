@@ -140,14 +140,22 @@ body.no-scroll {
 }
 
 .subtitle {
-    font-size: 16px;
-    /* Reduced from 24px */
+    font-size: 14px;
+    /* Reduced from 16px */
     font-weight: 400;
     color: #444;
     /* Softer contrast for body text */
     max-width: 800px;
-    margin-bottom: 60px;
+    margin-bottom: 20px;
     line-height: 1.6;
+}
+
+/* Language separator */
+.language-separator {
+    max-width: 800px;
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 30px 0;
 }
 
 /* GALERÍA */
