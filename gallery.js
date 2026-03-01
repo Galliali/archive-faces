@@ -18,14 +18,7 @@ const archive = [
     { src: "imagenes/0017.jpg", id: "FAC-0017", process: "Algorithmic erosion", year: "2025", notes: "Mouth region erased; eyes remain dominant." },
     { src: "imagenes/0018.jpg", id: "FAC-0018", process: "Compression artefact layering", year: "2025", notes: "Multiple temporal compressions visible." },
     { src: "imagenes/0019.jpg", id: "FAC-0019", process: "Neural hallucination", year: "2025", notes: "Non-existent facial traits introduced." },
-    { src: "imagenes/0020.jpg", id: "FAC-0020", process: "Wavelet noise saturation", year: "2025", notes: "Facial structure reduced to noise gradients." },
-    { src: "imagenes/0021.jpg", id: "FAC-0021", process: "Lossy recompression + blur", year: "2025", notes: "Face merges with background textures." },
-    { src: "imagenes/0022.jpg", id: "FAC-0022", process: "AI speculative reconstruction", year: "2025", notes: "Synthetic symmetry overrides original features." },
-    { src: "imagenes/0023.jpg", id: "FAC-0023", process: "Final degradation pass", year: "2025", notes: "Residual facial trace barely detectable." },
-    { src: "imagenes/0024.jpg", id: "FAC-0024", process: "Final degradation pass", year: "2025", notes: "Residual facial trace barely detectable." },
-    { src: "imagenes/0025.jpg", id: "FAC-0025", process: "Final degradation pass", year: "2025", notes: "Residual facial trace barely detectable." },
-    { src: "imagenes/0026.jpg", id: "FAC-0026", process: "Final degradation pass", year: "2025", notes: "Residual facial trace barely detectable." },
-    { src: "imagenes/0027.jpg", id: "FAC-0027", process: "Final degradation pass", year: "2025", notes: "Residual facial trace barely detectable." }
+
 ];
 
 const gallery = document.getElementById("gallery");
