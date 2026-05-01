@@ -1,25 +1,23 @@
 const archive = [
-    { src: "imagenes/0001.jpg", id: "FAC-0001", process: "JPEG compression loop (Q=2)", year: "2024", notes: "Facial structure partially preserved. High artefact density." },
-    { src: "imagenes/0002.jpg", id: "FAC-0002", process: "JPEG compression loop (Q=2)", year: "2024", notes: "Eye region collapses into noise patterns." },
-    { src: "imagenes/0003.jpg", id: "FAC-0003", process: "Wavelet degradation", year: "2024", notes: "Residual symmetry detected in jaw structure." },
-    { src: "imagenes/0004.jpg", id: "FAC-0004", process: "Wavelet degradation + blur", year: "2024", notes: "Mouth dissolves; forehead remains legible." },
-    { src: "imagenes/0005.jpg", id: "FAC-0005", process: "AI reconstruction over corrupted input", year: "2025", notes: "Speculative facial features hallucinated." },
-    { src: "imagenes/0006.jpg", id: "FAC-0006", process: "JPEG erosion cascade", year: "2025", notes: "Identity markers replaced by compression blocks." },
-    { src: "imagenes/0007.jpg", id: "FAC-0007", process: "Lossy recompression", year: "2025", notes: "Skin texture replaced by abstract patterns." },
-    { src: "imagenes/0008.jpg", id: "FAC-0008", process: "Algorithmic noise injection", year: "2025", notes: "Face detectable only by contour inference." },
-    { src: "imagenes/0009.jpg", id: "FAC-0009", process: "Wavelet truncation", year: "2025", notes: "Eyes preserved as high-contrast anchors." },
-    { src: "imagenes/0010.jpg", id: "FAC-0010", process: "JPEG compression loop", year: "2025", notes: "Complete collapse of background separation." },
-    { src: "imagenes/0011.jpg", id: "FAC-0011", process: "Progressive downscaling", year: "2025", notes: "Facial proportions distorted beyond recognition." },
-    { src: "imagenes/0012.jpg", id: "FAC-0012", process: "Neural upscaling + degradation", year: "2025", notes: "Synthetic sharpening creates false detail." },
-    { src: "imagenes/0013.jpg", id: "FAC-0013", process: "JPEG artefact amplification", year: "2025", notes: "Block patterns dominate facial surface." },
-    { src: "imagenes/0014.jpg", id: "FAC-0014", process: "Lossy color quantization", year: "2025", notes: "Skin tones collapse into flat chromatic planes." },
-    { src: "imagenes/0015.jpg", id: "FAC-0015", process: "Iterative recompression", year: "2025", notes: "Identity persists only through outline." },
-    { src: "imagenes/0016.jpg", id: "FAC-0016", process: "Data corruption simulation", year: "2025", notes: "Random noise disrupts facial coherence." },
-    { src: "imagenes/0017.jpg", id: "FAC-0017", process: "Algorithmic erosion", year: "2025", notes: "Mouth region erased; eyes remain dominant." },
-    { src: "imagenes/0018.jpg", id: "FAC-0018", process: "Compression artefact layering", year: "2025", notes: "Multiple temporal compressions visible." },
-    { src: "imagenes/0019.jpg", id: "FAC-0019", process: "Neural hallucination", year: "2025", notes: "Non-existent facial traits introduced." },
-
-];
+    { src: "imagenes/0001.jpg", id: "FAC-0001", compressions: 3090 },
+    { src: "imagenes/0002.jpg", id: "FAC-0002", compressions: 2005 },
+    { src: "imagenes/0003.jpg", id: "FAC-0003", compressions: 2900 },
+    { src: "imagenes/0004.jpg", id: "FAC-0004", compressions: 4500 },
+    { src: "imagenes/0005.jpg", id: "FAC-0005", compressions: 1980 },
+    { src: "imagenes/0006.jpg", id: "FAC-0006", compressions: 3400 },
+    { src: "imagenes/0007.jpg", id: "FAC-0007", compressions: 2100 },
+    { src: "imagenes/0008.jpg", id: "FAC-0008", compressions: 4100 },
+    { src: "imagenes/0009.jpg", id: "FAC-0009", compressions: 3587 },
+    { src: "imagenes/0010.jpg", id: "FAC-0010", compressions: 1349 },
+    { src: "imagenes/0011.jpg", id: "FAC-0011", compressions: 2394 },
+    { src: "imagenes/0012.jpg", id: "FAC-0012", compressions: 3000 },
+    { src: "imagenes/0013.jpg", id: "FAC-0013", compressions: 3090 },
+    { src: "imagenes/0014.jpg", id: "FAC-0014", compressions: 2031 },
+    { src: "imagenes/0015.jpg", id: "FAC-0015", compressions: 4875 },
+    { src: "imagenes/0016.jpg", id: "FAC-0016", compressions: 1987 },
+    { src: "imagenes/0017.jpg", id: "FAC-0017", compressions: 2001 },
+    { src: "imagenes/0018.jpg", id: "FAC-0018", compressions: 1889 },
+    { src: "imagenes/0019.jpg", id: "FAC-0019", compressions: 4970 },];
 
 const gallery = document.getElementById("gallery");
 const lightbox = document.getElementById("lightbox");
@@ -42,7 +40,7 @@ function updateLightbox(index) {
     lightboxImg.src = item.src;
 
     // Update Title (Serif)
-    lightboxTitle.textContent = item.id;
+    lightboxTitle.innerHTML = `${item.id}<br><span class="comp-text">no. ${item.compressions} image compressed</span>`;
 
     // Update Counter (Mono) e.g. "01 — 29"
     // Pad with leading zero
@@ -64,7 +62,7 @@ archive.forEach((item, index) => {
     // Create caption
     const caption = document.createElement("div");
     caption.className = "caption";
-    caption.textContent = item.id;
+    caption.innerHTML = `${item.id}<br><span class="comp-text">no. ${item.compressions} image compressed</span>`;
 
     // Add click event for lightbox
     img.addEventListener("click", () => {

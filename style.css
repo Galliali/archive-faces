@@ -16,9 +16,10 @@ html {
 
 :root {
     --rojo: #59514D;
-    --negro: #F2F2F2;
-    --gris: #8C0303;
-    --gris-claro: #F2F2F2;
+    --negro: #FFFFFF;
+    /* Replaced dark red with tech-archive blue */
+    --gris: #0047AB; 
+    --gris-claro: #fbfbfb;
 }
 
 /* GENERAL */
@@ -70,10 +71,7 @@ body.no-scroll {
 
 .site-header a.menu-link {
     font-family: 'Roboto Mono', monospace;
-    /* Tech feel for menu */
-    /* Tech feel for menu */
-    font-size: 13px;
-    /* Smaller, minimalist */
+    font-size: 14px;
     font-weight: 500;
     text-transform: lowercase;
     letter-spacing: -0.5px;
@@ -113,7 +111,7 @@ body.no-scroll {
     font-family: 'Bodoni Moda', serif;
     /* Classy serif logo */
     font-weight: 800;
-    font-size: 18px;
+    font-size: 20px;
     /* Smaller, minimalist logo */
 }
 
@@ -137,6 +135,8 @@ body.no-scroll {
 /* Modifier for About Page Title */
 .about-title {
     color: #000;
+    margin-top: 40px; /* Reduced visual gap from desktop navbar */
+    margin-bottom: 50px;
 }
 
 .subtitle {
@@ -145,17 +145,18 @@ body.no-scroll {
     font-weight: 400;
     color: #444;
     /* Softer contrast for body text */
-    max-width: 800px;
-    margin-bottom: 20px;
-    line-height: 1.6;
+    max-width: 550px; /* Narrower width */
+    text-align: left; /* Left aligned flush */
+    margin-bottom: 30px;
+    line-height: 1.7; /* Breathing room */
 }
 
 /* Language separator */
 .language-separator {
-    max-width: 800px;
+    max-width: 550px;
     border: none;
     border-top: 1px solid #ddd;
-    margin: 30px 0;
+    margin: 60px 0;
 }
 
 /* GALERÍA */
@@ -163,9 +164,9 @@ body.no-scroll {
     margin-top: 40px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    /* 5 images per row for better spacing */
+    /* 5 images per row */
     gap: 100px;
-    /* Archaeological archive spacing */
+    /* Adjusted for better balance */
 }
 
 /* VIDEO GALLERY OVERRIDE */
@@ -180,7 +181,6 @@ body.no-scroll {
 .gallery-item {
     display: flex;
     flex-direction: column;
-    /* align-items: center;  Optional: center caption relative to image if desired, but default block is fine */
 }
 
 .gallery img {
@@ -190,18 +190,34 @@ body.no-scroll {
     object-fit: cover;
     cursor: zoom-in;
     transition:
-        transform 0.2s ease,
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
+        transform 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .gallery img:hover {
-    border-color: var(--gris);
-    /* Red hover to match other site interactions */
+    /* Removed blue hover border */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     /* Soft gray shadow */
-    transform: scale(1.02);
-    /* Subtle zoom */
+    transform: scale(1.03);
+    /* Clean zoom */
+}
+
+/* COMPRESSION SUBTEXT */
+.comp-text {
+    display: inline-block;
+    margin-top: 6px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    font-weight: 300;
+    color: #666;
+    letter-spacing: 0.3px;
+}
+
+.ui-title .comp-text {
+    font-size: 14px;
+    font-weight: 400;
+    color: #444;
 }
 
 /* ZOOM & CAPTION */
@@ -214,6 +230,7 @@ body.no-scroll {
     color: #000 !important;
     /* Force Black */
     letter-spacing: 0.3px;
+    line-height: 1.4;
     opacity: 1;
     transition: opacity 0.3s ease;
 }
@@ -478,7 +495,7 @@ body.no-scroll {
 
     .gallery {
         grid-template-columns: repeat(4, 1fr);
-        gap: 60px;
+        gap: 80px;
     }
 
     .main-title {
@@ -487,7 +504,6 @@ body.no-scroll {
 
     .subtitle {
         font-size: 15px;
-        max-width: 90%;
     }
 }
 
@@ -500,15 +516,15 @@ body.no-scroll {
 
     .site-header {
         padding: 0 25px;
-        height: 50px;
+        height: 60px;
     }
 
     .site-header a.menu-link {
-        font-size: 13px;
+        font-size: 15px;
     }
 
     .logo {
-        font-size: 17px;
+        font-size: 20px;
     }
 
     .main-menu {
@@ -517,7 +533,7 @@ body.no-scroll {
 
     .gallery {
         grid-template-columns: repeat(3, 1fr);
-        gap: 50px;
+        gap: 60px;
         margin-top: 30px;
     }
 
@@ -528,7 +544,6 @@ body.no-scroll {
 
     .subtitle {
         font-size: 15px;
-        max-width: 100%;
         line-height: 1.6;
     }
 
@@ -612,16 +627,16 @@ body.no-scroll {
     }
 
     .site-header {
-        height: 48px;
+        height: 60px;
         padding: 0 20px;
     }
 
     .site-header a.menu-link {
-        font-size: 12px;
+        font-size: 14px;
     }
 
     .logo {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .main-menu {
@@ -629,8 +644,8 @@ body.no-scroll {
     }
 
     .gallery {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 35px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px;
         margin-top: 25px;
     }
 
@@ -724,16 +739,17 @@ body.no-scroll {
     }
 
     .site-header {
-        height: 45px;
+        height: 60px;
         padding: 0 15px;
     }
 
     .site-header a.menu-link {
-        font-size: 12px;
+        font-size: 14px;
+        font-weight: 600;
     }
 
     .logo {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .main-menu {
@@ -741,9 +757,19 @@ body.no-scroll {
     }
 
     .gallery {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-        margin-top: 20px;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 80px;
+        width: 100%;
+        margin-top: 40px;
+        padding: 0 20px;
+    }
+
+    .gallery-item {
+        width: 100%;
+        max-width: 260px;
+        align-items: center;
+        text-align: center;
     }
 
     .main-title {
@@ -751,20 +777,32 @@ body.no-scroll {
         margin-bottom: 15px;
     }
 
+    .about-title {
+        margin-top: 40px; /* Better balanced */
+        margin-bottom: 30px;
+    }
+
     .subtitle {
         font-size: 14px;
-        line-height: 1.5;
-        margin-bottom: 30px;
+        line-height: 1.6;
+        margin-bottom: 25px;
+        text-align: left;
+    }
+
+    .language-separator {
+        margin: 40px 0;
     }
 
     /* Lightbox adjustments for mobile */
     .lightbox-content {
         padding-right: 15px;
         padding-left: 15px;
+        padding-bottom: 120px; /* Extra space for taller text UI */
+        justify-content: center; /* Centering the zoomed image strictly on mobile */
     }
 
     .lightbox-content img {
-        max-height: 70vh;
+        max-height: 60vh;
         max-width: 90vw;
     }
 
@@ -867,16 +905,17 @@ body.no-scroll {
     }
 
     .site-header {
-        height: 40px;
-        padding: 0 12px;
+        height: 60px;
+        padding: 0 15px;
     }
 
     .site-header a.menu-link {
-        font-size: 11px;
+        font-size: 14px;
+        font-weight: 600;
     }
 
     .logo {
-        font-size: 14px;
+        font-size: 18px;
     }
 
     .main-menu {
@@ -885,7 +924,18 @@ body.no-scroll {
 
     .gallery {
         grid-template-columns: 1fr;
-        gap: 25px;
+        justify-items: center;
+        gap: 60px;
+        width: 100%;
+        margin-top: 40px;
+        padding: 0 20px;
+    }
+
+    .gallery-item {
+        width: 100%;
+        max-width: 240px;
+        align-items: center;
+        text-align: center;
     }
 
     .main-title {
@@ -902,8 +952,13 @@ body.no-scroll {
     }
 
     /* Lightbox for small phones */
+    .lightbox-content {
+        padding-bottom: 160px; /* Space for stacked UI buttons + text */
+        justify-content: center; /* Centering the zoomed image */
+    }
+
     .lightbox-content img {
-        max-height: 65vh;
+        max-height: 50vh;
         max-width: 95vw;
     }
 
