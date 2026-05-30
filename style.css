@@ -116,6 +116,19 @@ body.no-scroll {
 }
 
 /* TITULOS */
+.index-title {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    font-weight: 400;
+    color: #444; /* Clean dark gray, matching text paragraphs */
+    max-width: 650px; /* Give it slightly more room due to mono font width */
+    line-height: 1.5;
+    letter-spacing: 0px;
+    margin-top: 20px; /* Greatly reduced gap from navbar */
+    margin-bottom: 100px;
+    text-align: left;
+}
+
 .main-title {
     font-family: 'Bodoni Moda', serif;
     /* Balenciaga style */
@@ -163,9 +176,9 @@ body.no-scroll {
 .gallery {
     margin-top: 40px;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    /* 5 images per row */
-    gap: 100px;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 images per row */
+    gap: 120px;
     /* Adjusted for better balance */
 }
 
@@ -770,6 +783,12 @@ body.no-scroll {
         max-width: 260px;
         align-items: center;
         text-align: center;
+    }
+
+    .index-title {
+        font-size: 18px;
+        margin-top: 20px; /* Reduced gap from mobile navbar */
+        margin-bottom: 30px;
     }
 
     .main-title {
