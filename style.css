@@ -18,7 +18,7 @@ html {
     --rojo: #59514D;
     --negro: #FFFFFF;
     /* Replaced dark red with tech-archive blue */
-    --gris: #0047AB; 
+    --gris: #0047AB;
     --gris-claro: #fbfbfb;
 }
 
@@ -116,24 +116,7 @@ body.no-scroll {
 }
 
 /* TITULOS */
-.index-title {
-    font-family: 'Roboto Mono', monospace;
-    font-size: 14px;
-    font-weight: 400;
-    color: #444; /* Clean dark gray, matching text paragraphs */
-    max-width: 650px; /* Give it slightly more room due to mono font width */
-    line-height: 1.5;
-    letter-spacing: 0px;
-    margin-top: 20px; /* Greatly reduced gap from navbar */
-    margin-bottom: 100px;
-    text-align: left;
-}
 
-.intro-container {
-    max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
-}
 
 .main-title {
     font-family: 'Bodoni Moda', serif;
@@ -154,7 +137,8 @@ body.no-scroll {
 /* Modifier for About Page Title */
 .about-title {
     color: #000;
-    margin-top: 40px; /* Reduced visual gap from desktop navbar */
+    margin-top: 40px;
+    /* Reduced visual gap from desktop navbar */
     margin-bottom: 50px;
 }
 
@@ -164,10 +148,13 @@ body.no-scroll {
     font-weight: 400;
     color: #444;
     /* Softer contrast for body text */
-    max-width: 550px; /* Narrower width */
-    text-align: left; /* Left aligned flush */
+    max-width: 550px;
+    /* Narrower width */
+    text-align: left;
+    /* Left aligned flush */
     margin-bottom: 30px;
-    line-height: 1.7; /* Breathing room */
+    line-height: 1.7;
+    /* Breathing room */
 }
 
 /* Language separator */
@@ -794,11 +781,7 @@ body.no-scroll {
         text-align: center;
     }
 
-    .index-title {
-        font-size: 18px;
-        margin-top: 20px; /* Reduced gap from mobile navbar */
-        margin-bottom: 30px;
-    }
+
 
     .main-title {
         font-size: 36px;
@@ -806,7 +789,8 @@ body.no-scroll {
     }
 
     .about-title {
-        margin-top: 40px; /* Better balanced */
+        margin-top: 40px;
+        /* Better balanced */
         margin-bottom: 30px;
     }
 
@@ -825,8 +809,10 @@ body.no-scroll {
     .lightbox-content {
         padding-right: 15px;
         padding-left: 15px;
-        padding-bottom: 120px; /* Extra space for taller text UI */
-        justify-content: center; /* Centering the zoomed image strictly on mobile */
+        padding-bottom: 120px;
+        /* Extra space for taller text UI */
+        justify-content: center;
+        /* Centering the zoomed image strictly on mobile */
     }
 
     .lightbox-content img {
@@ -981,8 +967,10 @@ body.no-scroll {
 
     /* Lightbox for small phones */
     .lightbox-content {
-        padding-bottom: 160px; /* Space for stacked UI buttons + text */
-        justify-content: center; /* Centering the zoomed image */
+        padding-bottom: 160px;
+        /* Space for stacked UI buttons + text */
+        justify-content: center;
+        /* Centering the zoomed image */
     }
 
     .lightbox-content img {
