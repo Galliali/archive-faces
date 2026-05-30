@@ -129,6 +129,12 @@ body.no-scroll {
     text-align: left;
 }
 
+.intro-container {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .main-title {
     font-family: 'Bodoni Moda', serif;
     /* Balenciaga style */
@@ -179,7 +185,10 @@ body.no-scroll {
     grid-template-columns: repeat(4, 1fr);
     /* 4 images per row */
     gap: 120px;
-    /* Adjusted for better balance */
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    /* Prevent images from becoming too large on wide screens */
 }
 
 /* VIDEO GALLERY OVERRIDE */
