@@ -1,23 +1,23 @@
 const archive = [
     { src: "imagenes/0001.jpg", id: "FAC-0001", compressions: 3090 },
-    { src: "imagenes/0002.jpg", id: "FAC-0002", compressions: 2005 },
+    { src: "imagenes/0002.jpg", id: "FAC-0002", compressions: 1974 },
     { src: "imagenes/0003.jpg", id: "FAC-0003", compressions: 2900 },
-    { src: "imagenes/0004.jpg", id: "FAC-0004", compressions: 4500 },
-    { src: "imagenes/0005.jpg", id: "FAC-0005", compressions: 1980 },
+    { src: "imagenes/0004.jpg", id: "FAC-0004", compressions: 3102 },
+    { src: "imagenes/0005.jpg", id: "FAC-0005", compressions: 2012 },
     { src: "imagenes/0006.jpg", id: "FAC-0006", compressions: 3400 },
     { src: "imagenes/0007.jpg", id: "FAC-0007", compressions: 2100 },
     { src: "imagenes/0008.jpg", id: "FAC-0008", compressions: 4100 },
-    { src: "imagenes/0009.jpg", id: "FAC-0009", compressions: 3587 },
-    { src: "imagenes/0010.jpg", id: "FAC-0010", compressions: 1349 },
+    { src: "imagenes/0009.jpg", id: "FAC-0009", compressions: 2995 },
+    { src: "imagenes/0010.jpg", id: "FAC-0010", compressions: 4518 },
     { src: "imagenes/0011.jpg", id: "FAC-0011", compressions: 2394 },
-    { src: "imagenes/0012.jpg", id: "FAC-0012", compressions: 3000 },
+    { src: "imagenes/0012.jpg", id: "FAC-0012", compressions: 2128 },
     { src: "imagenes/0013.jpg", id: "FAC-0013", compressions: 3090 },
-    { src: "imagenes/0014.jpg", id: "FAC-0014", compressions: 2031 },
+    { src: "imagenes/0014.jpg", id: "FAC-0014", compressions: 2454 },
     { src: "imagenes/0015.jpg", id: "FAC-0015", compressions: 4875 },
     { src: "imagenes/0016.jpg", id: "FAC-0016", compressions: 1987 },
     { src: "imagenes/0017.jpg", id: "FAC-0017", compressions: 2001 },
-    { src: "imagenes/0018.jpg", id: "FAC-0018", compressions: 1889 },
-    { src: "imagenes/0019.jpg", id: "FAC-0019", compressions: 4970 },];
+    { src: "imagenes/0018.jpg", id: "FAC-0018", compressions: 5001 },
+    { src: "imagenes/0019.jpg", id: "FAC-0019", compressions: 1920 },];
 
 const gallery = document.getElementById("gallery");
 const lightbox = document.getElementById("lightbox");
@@ -40,7 +40,9 @@ function updateLightbox(index) {
     lightboxImg.src = item.src;
 
     // Update Title (Serif)
-    lightboxTitle.innerHTML = `${item.id}<br><span class="comp-text">no. ${item.compressions} image compressed</span>`;
+    const paddedComp = String(item.compressions).padStart(4, '0');
+    const classification = ["FAC-0010", "FAC-0015", "FAC-0018"].includes(item.id) ? "Unidentified" : "Facial vestige";
+    lightboxTitle.innerHTML = `${item.id}<br>Compression cycle no. ${paddedComp}<br>Classification: ${classification}`;
 
     // Update Counter (Mono) e.g. "01 — 29"
     // Pad with leading zero
@@ -62,7 +64,9 @@ archive.forEach((item, index) => {
     // Create caption
     const caption = document.createElement("div");
     caption.className = "caption";
-    caption.innerHTML = `${item.id}<br><span class="comp-text">no. ${item.compressions} image compressed</span>`;
+    const paddedComp = String(item.compressions).padStart(4, '0');
+    const classification = ["FAC-0010", "FAC-0015", "FAC-0018"].includes(item.id) ? "Unidentified" : "Facial vestige";
+    caption.innerHTML = `${item.id}<br>Compression cycle no. ${paddedComp}<br>Classification: ${classification}`;
 
     // Add click event for lightbox
     img.addEventListener("click", () => {

@@ -25,8 +25,7 @@ html {
 /* GENERAL */
 body {
     margin: 0;
-    padding: 40px;
-    padding-top: 80px;
+    padding: 80px 40px 40px 40px; /* Default sidebar padding for text content */
     font-family: 'Roboto Mono', monospace;
     font-weight: 300;
     background: var(--negro);
@@ -132,6 +131,7 @@ body.no-scroll {
     color: var(--gris);
     margin-bottom: 20px;
     margin-left: -1px;
+    padding-left: 0; /* Align with body padding */
 }
 
 /* Modifier for About Page Title */
@@ -172,10 +172,8 @@ body.no-scroll {
     grid-template-columns: repeat(4, 1fr);
     /* 4 images per row */
     gap: 160px;
-    max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
-    /* Prevent images from becoming too large on wide screens */
+    /* Respect standard body padding */
+    /* Removed max-width to allow fluid expansion */
 }
 
 /* VIDEO GALLERY OVERRIDE */
