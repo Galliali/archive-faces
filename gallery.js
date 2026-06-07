@@ -41,8 +41,7 @@ function updateLightbox(index) {
 
     // Update Title (Serif)
     const paddedComp = String(item.compressions).padStart(4, '0');
-    const classification = ["FAC-0010", "FAC-0015", "FAC-0018"].includes(item.id) ? "Unidentified" : "Facial vestige";
-    lightboxTitle.innerHTML = `${item.id}<br>Compression cycle no. ${paddedComp}<br>Classification: ${classification}`;
+    lightboxTitle.innerHTML = `${item.id}<br>Compression cycle no. ${paddedComp}`;
 
     // Update Counter (Mono) e.g. "01 — 29"
     // Pad with leading zero
@@ -65,8 +64,7 @@ archive.forEach((item, index) => {
     const caption = document.createElement("div");
     caption.className = "caption";
     const paddedComp = String(item.compressions).padStart(4, '0');
-    const classification = ["FAC-0010", "FAC-0015", "FAC-0018"].includes(item.id) ? "Unidentified" : "Facial vestige";
-    caption.innerHTML = `${item.id}<br>Compression cycle no. ${paddedComp}<br>Classification: ${classification}`;
+    caption.innerHTML = `${item.id}<br>Compression cycle no. ${paddedComp}`;
 
     // Add click event for lightbox
     img.addEventListener("click", () => {
