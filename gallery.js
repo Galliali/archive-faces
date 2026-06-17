@@ -50,33 +50,35 @@ function updateLightbox(index) {
     counter.textContent = `${currentStr} — ${totalStr}`;
 }
 
-archive.forEach((item, index) => {
-    // Create container
-    const container = document.createElement("div");
-    container.className = "gallery-item";
+if (gallery) {
+    archive.forEach((item, index) => {
+        // Create container
+        const container = document.createElement("div");
+        container.className = "gallery-item";
 
-    // Create image
-    const img = document.createElement("img");
-    img.src = item.src;
-    img.alt = item.id;
+        // Create image
+        const img = document.createElement("img");
+        img.src = item.src;
+        img.alt = item.id;
 
-    // Create caption
-    const caption = document.createElement("div");
-    caption.className = "caption";
-    const paddedComp = String(item.compressions).padStart(4, '0');
-    caption.innerHTML = `${item.id}<br>Compression cycle no. ${paddedComp}`;
+        // Create caption
+        const caption = document.createElement("div");
+        caption.className = "caption";
+        const paddedComp = String(item.compressions).padStart(4, '0');
+        caption.innerHTML = `${item.id}<br>Compression cycle no. ${paddedComp}`;
 
-    // Add click event for lightbox
-    img.addEventListener("click", () => {
-        updateLightbox(index);
-        lightbox.style.display = "flex"; // Flex for centering
-        document.body.classList.add("no-scroll"); // Lock scroll
+        // Add click event for lightbox
+        img.addEventListener("click", () => {
+            updateLightbox(index);
+            lightbox.style.display = "flex"; // Flex for centering
+            document.body.classList.add("no-scroll"); // Lock scroll
+        });
+
+        container.appendChild(img);
+        container.appendChild(caption);
+        gallery.appendChild(container);
     });
-
-    container.appendChild(img);
-    container.appendChild(caption);
-    gallery.appendChild(container);
-});
+}
 
 // Close interactions
 function closeLightbox() {
@@ -87,20 +89,26 @@ function closeLightbox() {
 
 
 // Close Button
-closeBtn.addEventListener("click", () => {
-    closeLightbox();
-});
+if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+        closeLightbox();
+    });
+}
 
 // Navigation interactions
-prevBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    updateLightbox(currentIndex - 1);
-});
+if (prevBtn) {
+    prevBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        updateLightbox(currentIndex - 1);
+    });
+}
 
-nextBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    updateLightbox(currentIndex + 1);
-});
+if (nextBtn) {
+    nextBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        updateLightbox(currentIndex + 1);
+    });
+}
 
 // Info toggle interaction
 
@@ -108,7 +116,7 @@ nextBtn.addEventListener("click", (e) => {
 // Keyboard controls
 document.addEventListener("keydown", (e) => {
     // Check if flex or block, but better just check logic display
-    if (lightbox.style.display === "flex" || lightbox.style.display === "block") {
+    if (lightbox && (lightbox.style.display === "flex" || lightbox.style.display === "block")) {
         if (e.key === "Escape") closeLightbox();
         if (e.key === "ArrowLeft") updateLightbox(currentIndex - 1);
         if (e.key === "ArrowRight") updateLightbox(currentIndex + 1);

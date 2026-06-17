@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>archive.faces — code</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,100..900&family=Roboto+Mono:wght@100..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="grayscale-page">
+
+    <header class="site-header">
+        <a href="index.html" class="menu-link logo">archive.faces</a>
+        <nav class="main-menu">
+            <a href="code.html" class="menu-link active">code</a>
+            <a href="recursivelineage.html" class="menu-link">recursive lineage</a>
+            <a href="agents.html" class="menu-link">for agents</a>
+        </nav>
+    </header>
+
+    <main class="content-container">
+        <section class="code-intro">
+            <h1 class="main-title">Open Source as a Heritage</h1>
+            <p class="subtitle highlight">
+                This project is built on the principle of open knowledge. The code used for recursive image compression
+                is fully open source: a shared tool for degrading, preserving, and transforming digital images over
+                time.
+
+                Here, open source is understood as a form of inheritance. Not only a technical gesture, but a way of
+                allowing the archive to survive beyond its original author, to be copied, modified, contaminated, and
+                continued by others.
+            </p>
+            <p class="subtitle">
+                We imagine a future where digital archives are collective and unstable, where memory is not preserved
+                intact but carried through processes of erosion, mutation, and reconstruction. By sharing this code, we
+                invite others to create their own archives of digital remains: organic traces left inside an
+                increasingly artificial landscape.
+            </p>
+        </section>
+
+        <section class="code-section">
+            <pre class="raw-code"><code>import numpy as np
+from PIL import Image, ImageFilter
+import os, shutil, subprocess
+# from IPython.display import FileLink
+
+def to_bw(img):
+    """Convertir imagen RGB a b/n"""
+    arr = np.array(img).astype(np.float32)
+    Y = (0.299*arr[:,:,0] + 0.587*arr[:,:,1] + 0.114*arr[:,:,2])
+    Y = np.clip(Y, 0, 255).astype(np.uint8)
+    return Image.fromarray(np.stack([Y, Y, Y], axis=2))
+
+input_path = "sample_data/miki-2000.png"
+frames_bn = "frames_bn"
+total_frames = 1200
+
+# Limpiar carpeta cada vez
+if os.path.exists(frames_bn):
+    shutil.rmtree(frames_bn)
+os.makedirs(frames_bn)
+
+img_current = Image.open(input_path).convert("RGB")
+
+# TABLA BASE DE DCT
+q_table_base = np.array([
+    [8,12,20,28,40,60,80,120],
+    [12,16,24,32,48,72,96,140],
+    [20,24,32,40,60,90,120,160],
+    [28,32,40,50,70,110,150,200],
+    [40,48,60,70,110,160,220,255],
+    [60,72,90,110,160,220,255,255],
+    [80,96,120,150,220,255,255,255],
+    [120,140,160,200,255,255,255,255]
+], dtype=float)
+
+# LOOP PRINCIPAL
+for i in range(total_frames):
+    out_path = f"{frames_bn}/frame_{i:05d}.jpg"
+    if i == 0:
+        img_bw = to_bw(img_current)
+        img_bw.save(out_path, "JPEG", quality=98, subsampling=0)
+        img_current = Image.open(out_path)
+        continue
+
+    # 1) DEFORMACIÓN
+    arr = np.array(img_current).astype(np.float32)
+    if i > 5:
+        arr = np.roll(arr, np.random.randint(-3,4), axis=0)
+        arr = np.roll(arr, np.random.randint(-3,4), axis=1)
+    img_current = Image.fromarray(arr.astype(np.uint8))
+
+    # 2) RUIDO
+    if i < 40: noise_amp = 0.4
+    elif i < 120: noise_amp = 1.0
+    else: noise_amp = 2.0
+    arr = np.array(img_current).astype(np.float32)
+    arr = np.clip(arr + np.random.normal(0, noise_amp, arr.shape), 0, 255)
+    img_current = Image.fromarray(arr.astype(np.uint8))
+
+    # 3) BLUR
+    img_current = img_current.filter(ImageFilter.GaussianBlur(radius=1.3))
+
+    # 4) SHARPEN
+    if i % 25 == 0 and i > 50:
+        img_current = img_current.filter(
+            ImageFilter.UnsharpMask(radius=2, percent=180)
+        )
+
+    # 5) B/N
+    img_current = to_bw(img_current)
+
+    # 6) DCT
+    q_table = q_table_base * (1 + np.random.normal(0, 0.25, (8,8)))
+
+    if i < 40: grow = np.random.uniform(1.01, 1.03)
+    elif i < 120: grow = np.random.uniform(1.03, 1.10)
+    else: grow = np.random.uniform(1.10, 1.25)
+
+    q_table = np.clip(q_table * grow, 1, 255)
+    q_flat = q_table.astype(np.uint8).flatten().tolist()
+
+    img_current.save(
+        out_path,
+        "JPEG",
+        qtables=[q_flat, q_flat, q_flat],
+        subsampling=2,
+        quality=1
+    )
+
+    img_current = Image.open(out_path)
+
+# CREAR VIDEO DESDE frames_bn
+def create_video_from_frames(folder, fps=6, output_name="video_bw.mp4"):
+    video_path = os.path.join(folder, output_name)
+    subprocess.run([
+        "ffmpeg",
+        "-y",
+        "-framerate", str(fps),
+        "-i", os.path.join(folder, "frame_%05d.jpg"),
+        "-c:v", "libx264",
+        "-pix_fmt", "yuv420p",
+        video_path
+    ], check=True)
+
+create_video_from_frames(frames_bn, fps=6, output_name="my_video_bw.mp4")
+
+# CREAR ZIP DE FRAMES_BN
+FRAMES_FOLDER_ZIP = frames_bn
+shutil.make_archive(FRAMES_FOLDER_ZIP, 'zip', FRAMES_FOLDER_ZIP)
+</code></pre>
+        </section>
+    </main>
+
+</body>
+
+</html>
