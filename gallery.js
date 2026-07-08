@@ -39,9 +39,9 @@ function updateLightbox(index) {
 
     lightboxImg.src = item.src;
 
-    // Update Title (Serif)
+    // Update Title (Mono)
     const paddedComp = String(item.compressions).padStart(4, '0');
-    lightboxTitle.innerHTML = `${item.id}<br>Compression cycle no. ${paddedComp}`;
+    lightboxTitle.innerHTML = `<span class="archive-id">${item.id}</span><br>Compression cycle no. ${paddedComp}`;
 
     // Update Counter (Mono) e.g. "01 — 29"
     // Pad with leading zero
@@ -65,7 +65,7 @@ if (gallery) {
         const caption = document.createElement("div");
         caption.className = "caption";
         const paddedComp = String(item.compressions).padStart(4, '0');
-        caption.innerHTML = `${item.id}<br>Compression cycle no. ${paddedComp}`;
+        caption.innerHTML = `<span class="archive-id">${item.id}</span><br>Compression cycle no. ${paddedComp}`;
 
         // Add click event for lightbox
         img.addEventListener("click", () => {

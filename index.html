@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>archive.faces</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,100..900&family=Roboto+Mono:wght@100..700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100..700;1,100..700&family=Space+Grotesk:wght@300..700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script defer src="menu.js"></script>
     <script defer src="gallery.js"></script>
 </head>
 
@@ -21,22 +22,41 @@
             <a href="recursivelineage.html" class="menu-link">recursive lineage</a>
             <a href="agents.html" class="menu-link">for agents</a>
         </nav>
+        <button id="menu-btn" class="menu-btn-mobile">menu</button>
     </header>
+
+    <!-- Mobile Overlay Menu -->
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay">
+        <div class="mobile-menu-links">
+            <a href="index.html" class="mobile-menu-item">archive</a>
+            <a href="code.html" class="mobile-menu-item">code</a>
+            <a href="recursivelineage.html" class="mobile-menu-item">recursive linaje</a>
+            <a href="agents.html" class="mobile-menu-item">for agents</a>
+            <a href="mailto:saragallegoalarcon@gmail.com" class="mobile-menu-item">contact</a>
+        </div>
+    </div>
 
     <main class="content-container">
         <section class="home-intro">
-            <p class="home-description">
-                archive.faces is an online repository that documents ultra-compressed faces and portraits. It represents
-                a sample of a social network in which the artist acts as the connecting link: classmates, family members,
-                teachers, childhood friends, and different kinds of relationships. These people are preserved as
-                low-resolution social traces, as if they had passed through endless uploads to new clouds that store
-                increasingly degraded information.
-            </p>
-            <p class="home-description">
-                This archive becomes the raw material for an archaeological speculative reconstruction. It imagines a
-                digital ecosystem where archive.faces collects the last organic faces—belonging to real people—after an
-                internet filled with AI-generated images, covering over the old and open internet since the 1990s.
-            </p>
+            <div class="home-intro-text">
+                <p class="home-description">
+                    archive.faces is an online repository that documents ultra-compressed faces and portraits. It
+                    represents
+                    a sample of a social network in which the artist acts as the connecting link: classmates, family
+                    members,
+                    teachers, childhood friends, and different kinds of relationships. These people are preserved as
+                    low-resolution social traces, as if they had passed through endless uploads to new clouds that store
+                    increasingly degraded information.
+                </p>
+                <p class="home-description">
+                    This archive becomes the raw material for an archaeological speculative reconstruction. It imagines
+                    a
+                    digital ecosystem where archive.faces collects the last organic faces—belonging to real people—after
+                    an
+                    internet filled with AI-generated images, covering over the old and open internet since the 1990s.
+                </p>
+            </div>
+            <h1 class="home-hero-title">archive.faces</h1>
         </section>
     </main>
 

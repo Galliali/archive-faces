@@ -15,22 +15,24 @@ html {
 }
 
 :root {
-    --rojo: #59514D;
-    --negro: #FFFFFF;
-    /* Replaced dark red with tech-archive blue */
-    --gris: #0047AB;
-    --gris-claro: #fbfbfb;
+    --color-bg: #FAFAFA;
+    --color-text: #0A0A0A;
+    --color-muted: #6F6A63;
+    --color-accent: #000000;
+    --font-sans: 'Space Grotesk', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
 }
 
 /* GENERAL */
 body {
     margin: 0;
-    padding: 80px 40px 40px 40px; /* Default sidebar padding for text content */
-    font-family: 'Roboto Mono', monospace;
+    padding: 90px 40px 40px 40px;
+    /* Default sidebar padding for text content */
+    font-family: var(--font-sans);
     font-weight: 300;
-    background: var(--negro);
-    color: var(--gris);
-    letter-spacing: 0.3px;
+    background: var(--color-bg);
+    color: var(--color-text);
+    letter-spacing: 0.2px;
 }
 
 body.no-scroll {
@@ -44,21 +46,13 @@ body.no-scroll {
     top: 0;
     left: 0;
     right: 0;
-    height: 50px;
-    /* Increased to accommodate larger text */
+    height: 60px;
     padding: 0 40px;
-    background: var(--negro);
+    background: var(--color-bg);
     display: flex;
     justify-content: space-between;
-    /* Left/Right layout */
     align-items: center;
-    /* Custom spacing for dotted border using gradient */
-    border-bottom: none;
-    background-image: radial-gradient(circle, #000 1px, transparent 1.5px);
-    background-size: 10px 1px;
-    /* Smaller dots and spacing */
-    background-repeat: repeat-x;
-    background-position: bottom;
+    border-bottom: 1px solid rgba(10, 10, 10, 0.08);
     z-index: 1000;
 }
 
@@ -69,15 +63,17 @@ body.no-scroll {
 }
 
 .site-header a.menu-link {
-    font-family: 'Roboto Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 14px;
     font-weight: 500;
     text-transform: lowercase;
-    letter-spacing: -0.5px;
-    color: #000;
+    letter-spacing: -0.2px;
+    color: var(--color-text);
     text-decoration: none;
     position: relative;
+    transition: color 0.2s ease;
 }
+
 
 /* Hover Animation: Sliding Underline */
 .site-header a.menu-link::after {
@@ -87,8 +83,7 @@ body.no-scroll {
     height: 1px;
     bottom: -3px;
     left: 0;
-    background-color: var(--rojo);
-    /* Using the accent color for interaction */
+    background-color: var(--color-accent);
     transform: scaleX(0);
     transform-origin: bottom right;
     transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
@@ -101,67 +96,56 @@ body.no-scroll {
 }
 
 .site-header a.menu-link:hover {
-    color: var(--gris);
-    /* Match footer hover (Red) */
+    color: var(--color-accent);
 }
 
 .logo {
     margin-right: auto;
-    font-family: 'Bodoni Moda', serif;
-    /* Classy serif logo */
-    font-weight: 800;
+    font-family: var(--font-sans);
+    font-weight: 700;
     font-size: 20px;
-    /* Smaller, minimalist logo */
+    text-transform: lowercase;
+    color: var(--color-text);
+    text-decoration: none;
 }
 
 /* TITULOS */
-
-
 .main-title {
-    font-family: 'Bodoni Moda', serif;
-    /* Balenciaga style */
-    font-size: 60px;
-    /* Smaller, minimalist */
-    font-weight: 400;
-    /* Much thinner (Regular) */
-    text-transform: uppercase;
-    line-height: 0.9;
-    letter-spacing: -2px;
-    /* Tighter for that condensed fashionable look */
-    color: var(--gris);
+    font-family: var(--font-sans);
+    font-size: 48px;
+    font-weight: 700;
+    text-transform: lowercase;
+    line-height: 1.0;
+    letter-spacing: -1.5px;
+    color: var(--color-text);
     margin-bottom: 20px;
     margin-left: -1px;
-    padding-left: 0; /* Align with body padding */
+    padding-left: 0;
 }
 
 /* Modifier for About Page Title */
 .about-title {
-    color: #000;
+    color: var(--color-text);
     margin-top: 40px;
-    /* Reduced visual gap from desktop navbar */
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .subtitle {
-    font-size: 14px;
-    /* Reduced from 16px */
-    font-weight: 400;
-    color: #444;
-    /* Softer contrast for body text */
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--color-muted);
     max-width: 550px;
-    /* Narrower width */
     text-align: left;
-    /* Left aligned flush */
     margin-bottom: 30px;
     line-height: 1.7;
-    /* Breathing room */
 }
 
 /* Language separator */
 .language-separator {
     max-width: 550px;
     border: none;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #222;
     margin: 60px 0;
 }
 
@@ -172,17 +156,13 @@ body.no-scroll {
     grid-template-columns: repeat(4, 1fr);
     /* 4 images per row */
     gap: 160px;
-    /* Respect standard body padding */
-    /* Removed max-width to allow fluid expansion */
 }
 
 /* VIDEO GALLERY OVERRIDE */
 .video-gallery {
     grid-template-columns: 1fr;
     max-width: 1000px;
-    /* Contemplative size */
     margin: 40px auto 0 auto;
-    /* Centered with top margin */
 }
 
 .gallery-item {
@@ -192,8 +172,6 @@ body.no-scroll {
 
 .gallery img {
     width: 100%;
-    border: 1px solid var(--gris-claro);
-    /* Thinner border for subtlety */
     object-fit: cover;
     cursor: zoom-in;
     transition:
@@ -203,124 +181,104 @@ body.no-scroll {
 }
 
 .gallery img:hover {
-    /* Removed blue hover border */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    /* Soft gray shadow */
-    transform: scale(1.03);
-    /* Clean zoom */
+    transform: scale(1.3);
 }
 
 /* COMPRESSION SUBTEXT */
 .comp-text {
     display: inline-block;
     margin-top: 6px;
-    font-family: 'Roboto Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 11px;
     font-weight: 300;
-    color: #666;
+    color: var(--color-muted);
     letter-spacing: 0.3px;
 }
 
 .ui-title .comp-text {
     font-size: 14px;
     font-weight: 400;
-    color: #444;
+    color: var(--color-muted);
 }
 
 /* ZOOM & CAPTION */
 .caption {
     margin-top: 8px;
+    font-family: var(--font-mono);
     font-size: 11px;
-    /* Smaller, minimalist */
     font-weight: 300;
-    /* Lighter as requested */
-    color: #000 !important;
-    /* Force Black */
-    letter-spacing: 0.3px;
-    line-height: 1.4;
+    color: var(--color-muted) !important;
+    letter-spacing: -0.1px;
+    line-height: 1.5;
     opacity: 1;
     transition: opacity 0.3s ease;
+}
+
+/* ARCHIVE ID ACCENT HIGHLIGHT */
+.archive-id {
+    color: var(--color-accent);
+    font-weight: 500;
 }
 
 /* LIGHTBOX */
 .lightbox {
     position: fixed;
     inset: 0;
-    background: rgba(242, 242, 242, 0.98);
-    /* Slightly more transparent as requested */
+    background: rgba(246, 246, 245, 0.98);
     display: none;
     z-index: 2000;
-    /* Flex centering for the content */
     justify-content: center;
     align-items: center;
     padding: 20px;
 }
 
-
 /* LIGHTBOX IMAGE (Centered vertically and aligned right) */
 .lightbox-content {
     display: flex;
     justify-content: flex-end;
-    /* Right aligned */
     align-items: center;
-    /* Vertically centered */
     width: 100%;
     height: 100%;
     padding-bottom: 0;
-    /* Removed bottom padding for true centering */
     padding-right: 40px;
-    /* Spacing from right edge */
     box-sizing: border-box;
 }
 
 .lightbox-content img {
     max-height: 85vh;
-    /* Increased from 80vh for more prominence */
     max-width: 95vw;
-    /* Increased from 90vw for more screen usage */
     border: none;
-    /* Clean look or keep border? User didn't specified, but clean is better for contemplative */
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
 }
 
 /* NEW LIGHTBOX UI (Bottom Left) */
 .lightbox-ui {
     position: fixed;
     bottom: 30px;
-    /* Reduced from 40px */
     left: 40px;
     z-index: 3000;
     text-align: left;
-    color: #000;
+    color: var(--color-text);
 }
 
 .ui-title {
-    font-family: 'Bodoni Moda', serif;
+    font-family: var(--font-mono);
     font-weight: 400;
-    font-size: 36px;
-    /* Balanced size - not too big, not too small */
+    font-size: 20px;
     margin: 0 0 14px 0;
-    /* Slightly increased margin */
-    line-height: 1;
-    color: #000;
-    letter-spacing: -1px;
-    /* Balanced letter spacing */
+    line-height: 1.4;
+    color: var(--color-text);
+    letter-spacing: -0.5px;
 }
 
 .ui-bar {
     display: flex;
     align-items: center;
     gap: 20px;
-    font-family: 'Roboto Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 13px;
-    /* Increased for better readability */
     font-weight: 500;
-    /* Custom spaced dots for footer */
-    border-top: none;
-    background-image: radial-gradient(circle, #000 1px, transparent 1.5px);
-    background-size: 10px 1px;
-    background-repeat: repeat-x;
-    background-position: top;
+    border-top: 1px solid #222;
     padding-top: 10px;
     width: max-content;
     min-width: 250px;
@@ -329,28 +287,26 @@ body.no-scroll {
 .ui-btn {
     background: transparent;
     border: none;
-    font-family: 'Roboto Mono', monospace;
+    font-family: var(--font-sans);
     font-size: 13px;
-    /* Increased for better readability */
     font-weight: 500;
-    color: #000;
+    color: var(--color-text);
     cursor: pointer;
     padding: 0;
-    text-transform: uppercase;
+    text-transform: lowercase;
     transition: color 0.2s ease;
     white-space: nowrap;
-    /* Prevent text wrapping */
 }
 
 .ui-btn:hover {
-    color: var(--gris);
-    /* Red hover */
+    color: var(--color-accent);
 }
 
 .ui-counter {
     margin-right: auto;
-    /* Push nav group right? Or just spacing. Let's keep strict gap */
-    letter-spacing: 1px;
+    font-family: var(--font-mono);
+    color: var(--color-muted);
+    letter-spacing: 0.5px;
 }
 
 .nav-group {
@@ -359,28 +315,18 @@ body.no-scroll {
     margin-left: 20px;
 }
 
-/* CERRAR */
-/* Removed as requested */
-
-
 /* NAVIGATION BUTTONS */
 .nav-btn {
     position: fixed;
-    /* Fixed to viewport as requested so they don't move */
     top: 50%;
     transform: translateY(-50%);
-    transform: translateY(-50%);
     background: transparent;
-    /* Minimalist: No background */
     border: none;
     font-size: 48px;
-    /* Larger icon for visibility without circle */
-    color: #000;
-    /* Black icon for contrast */
+    color: var(--color-text);
     cursor: pointer;
     z-index: 3000;
     padding: 20px;
-    /* Hit area */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -391,37 +337,29 @@ body.no-scroll {
 .nav-btn:hover {
     transform: translateY(-50%) scale(1.2);
     background: transparent;
-    color: var(--gris);
-    /* Red hover effect */
+    color: var(--color-accent);
 }
 
 .prev {
     left: 40px;
-    /* Fixed distance from left screen edge */
 }
 
 .next {
     right: 40px;
-    /* Fixed distance from right screen edge */
 }
 
 /* INFO BUTTON */
-/* INFO BUTTON */
 .info-btn {
     position: fixed;
-    /* Fixed to viewport */
     top: 40px;
-    /* Top Right position */
     right: 40px;
     width: 44px;
     height: 44px;
     border-radius: 50%;
     border: none;
-    background: #000;
-    /* Solid Black */
-    color: #FFF;
-    /* White text */
-    font-family: 'Roboto Mono', monospace;
+    background: #111;
+    color: var(--color-text);
+    font-family: var(--font-mono);
     font-weight: 700;
     font-size: 20px;
     font-style: normal;
@@ -435,54 +373,55 @@ body.no-scroll {
 
 .info-btn:hover,
 .info-btn.active {
-    background: var(--gris);
-    /* Red hover effect */
+    background: var(--color-accent);
     color: #FFF;
     transform: scale(1.1);
 }
 
-
-/* INFO DETAILS PANEL */
 /* INFO DETAILS PANEL */
 .lightbox-details {
     position: fixed;
-    /* Side Drawer */
     top: 0;
     right: 0;
     bottom: 0;
-    /* Full height */
     width: 320px;
-    background: #F2F2F2;
-    /* Light background */
+    background: #EBE7DF;
     padding: 100px 40px 40px 40px;
-    /* Top padding clears the button */
-    border-left: 2px solid #000;
-    /* Border on left */
-    font-family: 'Roboto Mono', monospace;
+    border-left: 1px solid rgba(10, 10, 10, 0.15);
+    font-family: var(--font-mono);
     font-size: 14px;
-    color: #000;
+    color: var(--color-text);
     z-index: 2900;
     box-sizing: border-box;
     transform: translateX(100%);
-    /* Hidden by default */
     transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     display: block;
-    /* Always block for transform to work, control visibility via class */
 }
 
 .lightbox-details.show {
     transform: translateX(0);
-    /* Slide in */
     display: block;
 }
 
 .lightbox-details strong {
     display: block;
-    color: var(--gris);
-    /* Red accent for ID */
+    color: var(--color-accent);
     margin-bottom: 8px;
     font-size: 16px;
     font-weight: 700;
+}
+
+/* Mobile Menu & Hero Title Defaults (Desktop) */
+.menu-btn-mobile {
+    display: none;
+}
+
+.mobile-menu-overlay {
+    display: none;
+}
+
+.home-hero-title {
+    display: none;
 }
 
 /* ========================================
@@ -742,25 +681,146 @@ body.no-scroll {
 @media (max-width: 768px) {
     body {
         padding: 15px;
-        padding-top: 60px;
+        padding-top: 75px;
     }
 
+    /* Fixed topbar layout */
     .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
         height: 60px;
-        padding: 0 15px;
-    }
-
-    .site-header a.menu-link {
-        font-size: 14px;
-        font-weight: 600;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: var(--color-bg);
+        border-bottom: 1px solid rgba(10, 10, 10, 0.08);
+        z-index: 1000;
     }
 
     .logo {
-        font-size: 18px;
+        font-family: var(--font-sans);
+        font-size: 22px;
+        font-weight: 700;
+        text-transform: lowercase;
+        color: var(--color-text);
     }
 
     .main-menu {
-        gap: 20px;
+        display: none !important;
+        /* Hide desktop nav links */
+    }
+
+    .menu-btn-mobile {
+        display: block;
+        /* Show Menu button */
+        background: transparent;
+        border: none;
+        font-family: var(--font-sans);
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--color-text);
+        cursor: pointer;
+        padding: 5px 0;
+        transition: color 0.2s ease;
+        text-transform: lowercase;
+    }
+
+    /* Fullscreen Black Overlay Menu */
+    .mobile-menu-overlay {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        background: var(--color-bg);
+        z-index: 999;
+        /* Under header (z-index 1000) */
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 100px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 40px;
+        box-sizing: border-box;
+        transform: translateY(-100%);
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .mobile-menu-overlay.open {
+        transform: translateY(0);
+    }
+
+    .mobile-menu-links {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .mobile-menu-item {
+        font-family: var(--font-sans);
+        font-weight: 700;
+        font-size: 48px;
+        letter-spacing: -2px;
+        text-transform: lowercase;
+        color: var(--color-text);
+        text-decoration: none;
+        line-height: 1.1;
+        align-self: flex-start;
+        transition: opacity 0.2s ease;
+    }
+
+    .mobile-menu-item:hover {
+        opacity: 0.7;
+    }
+
+    /* Header toggle color states when menu is open */
+    body.menu-open {
+        overflow: hidden;
+    }
+
+    body.menu-open .site-header {
+        background: #000000 !important;
+        border-bottom: none !important;
+    }
+
+    body.menu-open .site-header .logo,
+    body.menu-open .site-header .menu-btn-mobile {
+        color: #ffffff !important;
+    }
+
+    /* Homepage Intro Section Restructuring */
+    .home-intro {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: calc(100vh - 120px);
+        min-height: calc(100dvh - 120px);
+        margin: 0;
+        padding-top: 10px;
+    }
+
+    .home-intro-text {
+        flex-grow: 1;
+    }
+
+    .home-hero-title {
+        display: block;
+        font-family: var(--font-sans);
+        font-weight: 700;
+        font-size: 56px;
+        letter-spacing: -2px;
+        text-transform: lowercase;
+        color: var(--color-text);
+        line-height: 0.95;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        align-self: flex-start;
     }
 
     .gallery {
@@ -778,8 +838,6 @@ body.no-scroll {
         align-items: center;
         text-align: center;
     }
-
-
 
     .main-title {
         font-size: 36px;
@@ -917,29 +975,53 @@ body.no-scroll {
     }
 
     .site-header {
-        height: auto;
-        padding: 12px 15px 8px 15px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
+        height: 55px;
+        padding: 0 15px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--color-bg);
     }
 
     .logo {
-        font-size: 16px;
-        margin: 0;
+        font-family: var(--font-sans);
+        font-size: 18px;
+        font-weight: 700;
+        text-transform: lowercase;
     }
 
     .main-menu {
-        gap: 12px;
-        width: 100%;
-        justify-content: flex-start;
-        flex-wrap: wrap;
+        display: none !important;
     }
 
-    .site-header a.menu-link {
-        font-size: 11px;
+    .menu-btn-mobile {
+        font-family: var(--font-sans);
+        font-size: 14px;
         font-weight: 500;
-        padding: 2px 0;
+        text-transform: lowercase;
+    }
+
+    .mobile-menu-overlay {
+        padding-top: 80px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .mobile-menu-item {
+        font-family: var(--font-sans);
+        font-size: 36px;
+        font-weight: 700;
+        text-transform: lowercase;
+    }
+
+    .mobile-menu-links {
+        gap: 20px;
+    }
+
+    .home-hero-title {
+        font-family: var(--font-sans);
+        font-size: 42px;
+        text-transform: lowercase;
     }
 
     .gallery {
@@ -1072,6 +1154,7 @@ body.no-scroll {
         font-size: 11px;
     }
 }
+
 /* HOME PAGE CONTENT */
 .content-container {
     max-width: 800px;
@@ -1196,7 +1279,8 @@ body.no-scroll {
     max-width: 800px;
 }
 
-.home-description, .subtitle {
+.home-description,
+.subtitle {
     font-family: 'Roboto Mono', monospace;
     font-size: 15px;
     line-height: 1.8;
@@ -1209,6 +1293,7 @@ body.no-scroll {
     .home-description {
         font-size: 16px;
     }
+
     .home-intro {
         margin: 30px 0 40px 0;
     }
@@ -1227,7 +1312,8 @@ body.no-scroll {
 
 .raw-code code {
     font-family: 'Roboto Mono', monospace;
-    white-space: pre-wrap; /* Better for mobile display */
+    white-space: pre-wrap;
+    /* Better for mobile display */
     word-break: break-all;
 }
 

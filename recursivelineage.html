@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recursive Lineage</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,100..900&family=Roboto+Mono:wght@100..700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100..700;1,100..700&family=Space+Grotesk:wght@300..700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script defer src="menu.js"></script>
 </head>
 
 <body>
@@ -20,13 +21,26 @@
             <a href="recursivelineage.html" class="menu-link active">recursive lineage</a>
             <a href="agents.html" class="menu-link">for agents</a>
         </nav>
+        <button id="menu-btn" class="menu-btn-mobile">menu</button>
     </header>
+
+    <!-- Mobile Overlay Menu -->
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay">
+        <div class="mobile-menu-links">
+            <a href="index.html" class="mobile-menu-item">archive</a>
+            <a href="code.html" class="mobile-menu-item">code</a>
+            <a href="recursivelineage.html" class="mobile-menu-item">recursive linaje</a>
+            <a href="agents.html" class="mobile-menu-item">for agents</a>
+            <a href="mailto:saragallegoalarcon@gmail.com" class="mobile-menu-item">contact</a>
+        </div>
+    </div>
 
     <main class="content-container">
         <h1 class="main-title about-title">Recursive Lineage</h1>
 
         <p class="subtitle">
-            Recursive Lineage speculates on a future in which humans and artificial systems share a calling to reconstruct
+            Recursive Lineage speculates on a future in which humans and artificial systems share a calling to
+            reconstruct
             their origins from the remains of the digital present, treating the last organic traces, lost within an
             internet saturated with artificial content, as material through which to interpret the past.
         </p>
