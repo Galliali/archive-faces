@@ -21,6 +21,7 @@
             <a href="code.html" class="menu-link">code</a>
             <a href="recursivelineage.html" class="menu-link">recursive lineage</a>
             <a href="agents.html" class="menu-link">for agents</a>
+            <a href="mailto:saragallegoalarcon@gmail.com" class="menu-link">contact</a>
         </nav>
         <button id="menu-btn" class="menu-btn-mobile">menu</button>
     </header>
@@ -67,19 +68,24 @@
 
     <!-- LIGHTBOX -->
     <div id="lightbox" class="lightbox">
-        <div class="lightbox-content">
-            <img id="lightbox-img" alt="">
-        </div>
+        <div class="lightbox-viewer">
+            <!-- Image Area -->
+            <div class="lightbox-media">
+                <img id="lightbox-img" alt="">
+            </div>
 
-        <!-- UI PANEL -->
-        <div class="lightbox-ui">
-            <h2 id="lightbox-title" class="ui-title">Title</h2>
-            <div class="ui-bar">
-                <button id="close-btn" class="ui-btn">CLOSE</button>
-                <span id="counter" class="ui-counter">00 — 00</span>
-                <div class="nav-group">
-                    <button id="prev-btn" class="ui-btn">PREV</button>
-                    <button id="next-btn" class="ui-btn">NEXT</button>
+            <!-- Metadata & Control Panel -->
+            <div class="lightbox-panel">
+                <div class="lightbox-meta">
+                    <div id="lightbox-id" class="meta-id"></div>
+                    <div id="lightbox-desc" class="meta-desc"></div>
+                </div>
+
+                <div class="lightbox-controls">
+                    <button id="close-btn" class="ctrl-btn close-btn">close</button>
+                    <span id="counter" class="ctrl-counter"></span>
+                    <button id="prev-btn" class="ctrl-btn prev-btn">prev</button>
+                    <button id="next-btn" class="ctrl-btn next-btn">next</button>
                 </div>
             </div>
         </div>

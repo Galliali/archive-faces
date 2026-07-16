@@ -17,12 +17,19 @@ const archive = [
     { src: "imagenes/0016.jpg", id: "FAC-0016", compressions: 1987 },
     { src: "imagenes/0017.jpg", id: "FAC-0017", compressions: 2001 },
     { src: "imagenes/0018.jpg", id: "FAC-0018", compressions: 5001 },
-    { src: "imagenes/0019.jpg", id: "FAC-0019", compressions: 1920 },];
+    { src: "imagenes/0019.jpg", id: "FAC-0019", compressions: 3120 },
+    { src: "imagenes/0020.jpg", id: "FAC-0020", compressions: 1451 },
+    { src: "imagenes/0021.jpg", id: "FAC-0021", compressions: 2001 },
+    { src: "imagenes/0022.jpg", id: "FAC-0022", compressions: 3021 },
+    { src: "imagenes/0023.jpg", id: "FAC-0023", compressions: 2001 },
+    { src: "imagenes/0024.jpg", id: "FAC-0024", compressions: 1010 },
+    { src: "imagenes/0025.jpg", id: "FAC-0025", compressions: 4002 },];
 
 const gallery = document.getElementById("gallery");
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
-const lightboxTitle = document.getElementById("lightbox-title");
+const lightboxId = document.getElementById("lightbox-id");
+const lightboxDesc = document.getElementById("lightbox-desc");
 const counter = document.getElementById("counter");
 const prevBtn = document.getElementById("prev-btn");
 const nextBtn = document.getElementById("next-btn");
@@ -39,15 +46,17 @@ function updateLightbox(index) {
 
     lightboxImg.src = item.src;
 
-    // Update Title (Mono)
-    const paddedComp = String(item.compressions).padStart(4, '0');
-    lightboxTitle.innerHTML = `<span class="archive-id">${item.id}</span><br>Compression cycle no. ${paddedComp}`;
+    // Update ID & Description
+    if (lightboxId) lightboxId.textContent = item.id;
+    if (lightboxDesc) {
+        const paddedComp = String(item.compressions).padStart(4, '0');
+        lightboxDesc.textContent = `Compression cycle no. ${paddedComp}`;
+    }
 
-    // Update Counter (Mono) e.g. "01 — 29"
-    // Pad with leading zero
+    // Update Counter (Mono) e.g. "01 / 19"
     const currentStr = String(currentIndex + 1).padStart(2, '0');
     const totalStr = String(archive.length).padStart(2, '0');
-    counter.textContent = `${currentStr} — ${totalStr}`;
+    counter.textContent = `${currentStr} / ${totalStr}`;
 }
 
 if (gallery) {
