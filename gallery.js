@@ -1,5 +1,5 @@
 const archive = [
-    { src: "imagenes/0001.jpg", id: "FAC-0001", compressions: 3090 },
+    { src: "imagenes/0001.jpg", id: "FAC-0001", compressions: 3090, },
     { src: "imagenes/0002.jpg", id: "FAC-0002", compressions: 1974 },
     { src: "imagenes/0003.jpg", id: "FAC-0003", compressions: 2900 },
     { src: "imagenes/0004.jpg", id: "FAC-0004", compressions: 3102 },
@@ -22,8 +22,12 @@ const archive = [
     { src: "imagenes/0021.jpg", id: "FAC-0021", compressions: 2001 },
     { src: "imagenes/0022.jpg", id: "FAC-0022", compressions: 3021 },
     { src: "imagenes/0023.jpg", id: "FAC-0023", compressions: 2001 },
-    { src: "imagenes/0024.jpg", id: "FAC-0024", compressions: 1010 },
-    { src: "imagenes/0025.jpg", id: "FAC-0025", compressions: 4002 },];
+    { src: "imagenes/0025.jpg", id: "FAC-0025", compressions: 1010 },
+    { src: "imagenes/0026.jpg", id: "FAC-0026", compressions: 2090 },
+    { src: "imagenes/0027.jpg", id: "FAC-0027", compressions: 0090 },
+    { src: "imagenes/0028.jpg", id: "FAC-0028", compressions: 1310 },
+    { src: "imagenes/0029.jpg", id: "FAC-0029", compressions: 1410 },
+    { src: "imagenes/0030.jpg", id: "FAC-0030", compressions: 1002 },];
 
 const gallery = document.getElementById("gallery");
 const lightbox = document.getElementById("lightbox");
