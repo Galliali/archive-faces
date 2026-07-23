@@ -54,7 +54,11 @@ function updateLightbox(index) {
     if (lightboxId) lightboxId.textContent = item.id;
     if (lightboxDesc) {
         const paddedComp = String(item.compressions).padStart(4, '0');
-        lightboxDesc.textContent = `Compression cycle no. ${paddedComp}`;
+        let descHtml = `Compression cycle no. ${paddedComp}`;
+        if (item.extra) {
+            descHtml += `<br><span style="opacity: 0.75">${item.extra}</span>`;
+        }
+        lightboxDesc.innerHTML = descHtml;
     }
 
     // Update Counter (Mono) e.g. "01 / 19"
@@ -78,7 +82,11 @@ if (gallery) {
         const caption = document.createElement("div");
         caption.className = "caption";
         const paddedComp = String(item.compressions).padStart(4, '0');
-        caption.innerHTML = `<span class="archive-id">${item.id}</span><br>Compression cycle no. ${paddedComp}`;
+        let captionHtml = `<span class="archive-id">${item.id}</span><br>Compression cycle no. ${paddedComp}`;
+        if (item.extra) {
+            captionHtml += `<br><span style="opacity: 0.75">${item.extra}</span>`;
+        }
+        caption.innerHTML = captionHtml;
 
         // Add click event for lightbox
         img.addEventListener("click", () => {
